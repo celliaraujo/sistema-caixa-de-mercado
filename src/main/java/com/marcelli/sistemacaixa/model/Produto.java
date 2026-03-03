@@ -80,6 +80,25 @@ public class Produto {
     }
 
     public void setPercentualDesconto(double percentualDesconto) {
+        if(percentualDesconto < 0 || percentualDesconto > 100){
+            throw new IllegalArgumentException("Desconto deve ser entre 0 e 100%.");
+        }
         this.percentualDesconto = percentualDesconto;
+    }
+
+    public BigDecimal getPrecoComDesconto(){
+        BigDecimal desconto = preco.multiply(BigDecimal.valueOf(percentualDesconto / 100));
+        return preco.subtract(desconto);
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", marca='" + marca + '\'' +
+                ", preco=" + preco +
+                ", percentualDesconto=" + percentualDesconto +
+                '}';
     }
 }
