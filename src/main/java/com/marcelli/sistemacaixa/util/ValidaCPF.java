@@ -43,15 +43,5 @@ public class ValidaCPF {
         return dig10 == primeiroDigito && dig11 == segundoDigito;
     }
 
-    public static void main(String[] args) {
-        String cpf1 = "11111111111";
-        String cpf2 = "54647142949";
-        String cpf3 = "5464714299";
 
-
-        System.out.println(isCPF(cpf1));
-        System.out.println(isCPF(cpf2));
-        System.out.println(isCPF(cpf3));
-
-    }
 }
