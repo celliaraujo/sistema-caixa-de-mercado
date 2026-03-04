@@ -3,7 +3,7 @@ package com.marcelli.sistemacaixa.model;
 import java.math.BigDecimal;
 
 public class Produto {
-    private long id;
+    private Long id;
     private String nome;
     private String marca;
     private BigDecimal preco;
@@ -25,8 +25,7 @@ public class Produto {
         private BigDecimal preco;
         private double percentualDesconto;
 
-        public Builder(long id, String nome, BigDecimal preco){
-            this.id = id;
+        public Builder(String nome, BigDecimal preco){
             this.nome = nome;
             this.preco = preco;
 
