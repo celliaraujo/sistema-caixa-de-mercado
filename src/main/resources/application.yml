@@ -4,17 +4,19 @@ spring:
 
 ---
 spring:
-  config:
-    activate:
-      on-profile: sqlserver
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=sistemacaixa
+    url: jdbc:postgresql://localhost:5432/sistemacaixa
     username: seu_usuario
     password: sua_senha
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: update   # ou create-drop, conforme sua necessidade
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
 
 ---
 spring:
