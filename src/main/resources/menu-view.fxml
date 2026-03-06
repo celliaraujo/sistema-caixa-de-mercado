@@ -1,0 +1,9 @@
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marcelli.sistemacaixa.controller.MenuController" spacing="10" alignment="CENTER">
+
+    <Button text="Cadastro de Cliente" onAction="#abrirCadastroCliente"/>
+    <Button text="Cadastro de Produto" onAction="#abrirCadastroProduto"/>
+</VBox>

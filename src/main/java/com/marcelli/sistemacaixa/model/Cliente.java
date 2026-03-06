@@ -15,6 +15,10 @@ public class Cliente {
     private String CPF;
     private String nome;
 
+    public Cliente() {
+    }
+
+
     public Cliente(String CPF, String nome){
         setCPF(CPF);
         this.nome = nome;

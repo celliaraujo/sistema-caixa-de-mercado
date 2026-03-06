@@ -1,13 +1,19 @@
+server:
+  port: 8080
+---
 spring:
   profiles:
-    active: h2
+    active: postgres
 
 ---
 spring:
+  config:
+    activate:
+      on-profile: postgres
   datasource:
     url: jdbc:postgresql://localhost:5432/sistemacaixa
-    username: seu_usuario
-    password: sua_senha
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
