@@ -39,6 +39,10 @@ public class ClienteService {
         return clienteRepository.findByNomeContainingIgnoreCase(nome);
     }
 
+    public Optional<Cliente> buscarPorCPF(String CPF){
+        return clienteRepository.findByCPF(CPF);
+    }
+
     public Cliente alterar(Long id, Cliente dadosAtualizados){
         Cliente clienteExistente = buscarPorId(id);
         if(dadosAtualizados.getNome() != null && !dadosAtualizados.getNome().isBlank()){

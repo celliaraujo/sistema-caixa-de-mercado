@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.marcelli.sistemacaixa.controller.ClienteController"
-      spacing="10"
-      alignment="CENTER">
+      spacing="10" alignment="CENTER">
+
+    <!-- Campos de cadastro -->
     <TextField fx:id="cpfField" promptText="CPF"/>
     <TextField fx:id="nomeField" promptText="Nome do Cliente"/>
     <Button text="Salvar" onAction="#salvarCliente"/>
+
+    <!-- Campo de busca -->
+    <HBox spacing="10">
+        <TextField fx:id="buscarCpfField" promptText="Buscar por CPF"/>
+        <Button text="Buscar" onAction="#buscarClientePorCpf"/>
+        <Button text="Listar Todos" onAction="#carregarClientes"/>
+    </HBox>
+
+    <!-- Tabela de clientes -->
+    <TableView fx:id="tabelaClientes" prefHeight="200" prefWidth="400">
+        <columns>
+            <TableColumn fx:id="colunaCpf" text="CPF" prefWidth="150"/>
+            <TableColumn fx:id="colunaNome" text="Nome" prefWidth="250"/>
+        </columns>
+    </TableView>
+
 </VBox>
