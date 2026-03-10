@@ -64,6 +64,9 @@ public class Produto {
     }
 
     public void setNome(String nome) {
+        if(nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome não pode ser vazio.");
+        }
         this.nome = nome;
     }
 
@@ -80,6 +83,9 @@ public class Produto {
     }
 
     public void setPreco(BigDecimal preco) {
+        if(preco == null || preco.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Preço deve ser maior que zero.");
+        }
         this.preco = preco;
     }
 
