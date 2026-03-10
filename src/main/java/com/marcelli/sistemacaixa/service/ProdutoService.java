@@ -55,7 +55,6 @@ public class ProdutoService {
     }
 
 
-
     private void verificarDuplicidade(Produto produto){
         boolean existe = produtoRepository.existsByNomeAndMarca(produto.getNome(), produto.getMarca());
         if(existe) throw new IllegalArgumentException("Já existe um produto com este nome e marca.");

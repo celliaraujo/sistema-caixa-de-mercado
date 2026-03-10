@@ -17,6 +17,7 @@ public class ClienteService {
     }
 
     public void salvar(String CPF, String nome){
+        verificarDuplicidadeCPF(CPF);
         Cliente cliente = new Cliente(CPF, nome);
         clienteRepository.save(cliente);
     }
@@ -53,5 +54,12 @@ public class ClienteService {
     public void deletarCliente(Long id){
         Cliente cliente = buscarPorId(id);
         clienteRepository.delete(cliente);
+    }
+
+    private void verificarDuplicidadeCPF(String cpf){
+        boolean existe = clienteRepository.existsByCPF(cpf);
+        if(existe){
+            throw new IllegalArgumentException("Já existe um cliente cadastrado com o CPF: " + cpf);
+        }
     }
 }
