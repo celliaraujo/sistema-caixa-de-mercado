@@ -16,9 +16,9 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    public void salvar(String CPF, String nome){
+    public void salvar(String CPF, String nome, String telefone, String email){
         verificarDuplicidadeCPF(CPF);
-        Cliente cliente = new Cliente(CPF, nome);
+        Cliente cliente = new Cliente(CPF, nome, telefone, email);
         clienteRepository.save(cliente);
     }
 
@@ -50,6 +50,7 @@ public class ClienteService {
         }
         if(dadosAtualizados.getCPF() != null && !dadosAtualizados.getCPF().isBlank()){
             clienteExistente.setCPF(dadosAtualizados.getCPF());
+
         }
 
         return clienteRepository.save(clienteExistente);

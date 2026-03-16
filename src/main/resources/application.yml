@@ -3,7 +3,7 @@ server:
 ---
 spring:
   profiles:
-    active: postgres
+    active: h2
 
 ---
 spring:

@@ -26,6 +26,12 @@ public class ClienteController {
     private TextField nomeField;
 
     @FXML
+    private TextField telefoneField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
     private TextField buscarCpfField;
 
     @FXML
@@ -34,12 +40,18 @@ public class ClienteController {
     private TableColumn<Cliente, String> colunaCpf;
     @FXML
     private TableColumn<Cliente, String> colunaNome;
+    @FXML
+    private TableColumn<Cliente, String> colunaTelefone;
+    @FXML
+    private TableColumn<Cliente, String> colunaEmail;
 
     // Inicializa a tabela ao abrir a tela
     @FXML
     public void initialize() {
         colunaCpf.setCellValueFactory(new PropertyValueFactory<>("CPF"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        colunaTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+        colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         carregarClientes();
     }
 
@@ -53,7 +65,9 @@ public class ClienteController {
         try {
             String cpf = cpfField.getText();
             String nome = nomeField.getText();
-            clienteService.salvar(cpf, nome);
+            String telefone = telefoneField.getText();
+            String email = emailField.getText();
+            clienteService.salvar(cpf, nome, telefone, email);
 
             mostrarAlerta(Alert.AlertType.INFORMATION, "Sucesso",
                     "Cliente salvo: " + nome + " - CPF: " + cpf);
@@ -77,6 +91,8 @@ public class ClienteController {
         if (selecionado != null) {
             cpfField.setText(selecionado.getCPF());
             nomeField.setText(selecionado.getNome());
+            telefoneField.setText(selecionado.getTelefone());
+            emailField.setText(selecionado.getEmail());
         }
     }
 
@@ -89,6 +105,9 @@ public class ClienteController {
                 Cliente cliente = clienteOpt.get();
                 tabelaClientes.getItems().clear();
                 tabelaClientes.getItems().add(cliente);
+                cpfField.setText(cliente.getCPF());
+                nomeField.setText(cliente.getNome());
+
             }else{
                 throw new EntityNotFoundException("Cliente não encontrado.");
             }
@@ -105,8 +124,12 @@ public class ClienteController {
         if (selecionado != null) {
             try {
                 Cliente dadosAtualizados = new Cliente();
+
+                String cpf = cpfField.getText();
                 dadosAtualizados.setNome(nomeField.getText());
-                dadosAtualizados.setCPF(cpfField.getText());
+                if (cpf != null && !cpf.isBlank()) {
+                    dadosAtualizados.setCPF(cpf);
+                }
 
                 clienteService.alterar(selecionado.getId(), dadosAtualizados);
 
@@ -122,6 +145,7 @@ public class ClienteController {
             mostrarAlerta(Alert.AlertType.WARNING, "Aviso",
                     "Selecione um cliente na tabela para editar.");
         }
+        limparCampos();
 
     }
 
@@ -147,7 +171,10 @@ public class ClienteController {
     private void limparCampos() {
         cpfField.clear();
         nomeField.clear();
+        telefoneField.clear();
+        emailField.clear();
         buscarCpfField.clear();
+
     }
 
     private void mostrarAlerta(Alert.AlertType tipo, String titulo, String mensagem) {
