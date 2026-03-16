@@ -50,7 +50,12 @@ public class ClienteService {
         }
         if(dadosAtualizados.getCPF() != null && !dadosAtualizados.getCPF().isBlank()){
             clienteExistente.setCPF(dadosAtualizados.getCPF());
-
+        }
+        if(dadosAtualizados.getTelefone() != null && !dadosAtualizados.getTelefone().isBlank()){
+            clienteExistente.setTelefone(dadosAtualizados.getTelefone());
+        }
+        if(dadosAtualizados.getEmail() != null && !dadosAtualizados.getEmail().isBlank()){
+            clienteExistente.setEmail(dadosAtualizados.getEmail());
         }
 
         return clienteRepository.save(clienteExistente);

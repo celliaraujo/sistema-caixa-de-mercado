@@ -130,6 +130,8 @@ public class ClienteController {
                 if (cpf != null && !cpf.isBlank()) {
                     dadosAtualizados.setCPF(cpf);
                 }
+                dadosAtualizados.setTelefone(telefoneField.getText());
+                dadosAtualizados.setEmail(emailField.getText());
 
                 clienteService.alterar(selecionado.getId(), dadosAtualizados);
 
@@ -166,6 +168,7 @@ public class ClienteController {
             mostrarAlerta(Alert.AlertType.WARNING, "Aviso",
                     "Selecione um cliente na tabela para excluir.");
         }
+        limparCampos();
     }
 
     private void limparCampos() {

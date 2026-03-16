@@ -20,8 +20,9 @@
           <TextField fx:id="nomeField" prefHeight="25.0" prefWidth="411.0" promptText="Nome do Cliente" />
          <TextField fx:id="telefoneField" prefHeight="25.0" prefWidth="181.0" promptText="Telefone" />
          <TextField fx:id="emailField" prefHeight="25.0" prefWidth="386.0" promptText="E-mail" />
-          <Button onAction="#salvarCliente" text="Cadastrar Novo" />
+          <Button onAction="#salvarCliente" text="Cadastrar" />
          <Button onAction="#alterarCliente" text="Atualizar Dados" />
+         <Button onAction="#excluirCliente" text="Remover Cliente" />
       </children>
    </FlowPane>
 
