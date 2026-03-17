@@ -3,10 +3,12 @@ package com.marcelli.sistemacaixa.service;
 import com.marcelli.sistemacaixa.model.Produto;
 import com.marcelli.sistemacaixa.repository.ProdutoRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Service
 public class ProdutoService {
     private final ProdutoRepository produtoRepository;
 
@@ -67,8 +69,8 @@ public class ProdutoService {
         if(produtoAlterado.getPreco() != null && produtoAlterado.getPreco().compareTo(BigDecimal.ZERO) > 0){
             produto.setPreco(produtoAlterado.getPreco());
         }
-        if(produtoAlterado.getPercentualDesconto() > 0 && produtoAlterado.getPercentualDesconto() < 100){
-            produto.setPercentualDesconto(produtoAlterado.getPercentualDesconto());
+        if(produtoAlterado.getDesconto() > 0 && produtoAlterado.getDesconto() < 100){
+            produto.setPercentualDesconto(produtoAlterado.getDesconto());
         }
         return produtoRepository.save(produto);
     }

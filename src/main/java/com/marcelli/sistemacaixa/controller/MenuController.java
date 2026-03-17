@@ -31,11 +31,13 @@ public class MenuController {
     }
 
     @FXML
-    public void abrirCadastroProduto() throws Exception{
-        System.out.println("Botão de Cliente clicado!");
+    public void abrirCadastroProduto(javafx.event.ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/produto-view.fxml"));
+        loader.setControllerFactory(springContext::getBean);
+
         Scene scene = new Scene(loader.load(),600,400);
-        Stage stage = new Stage();
+
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Cadastro de Produto");
         stage.setScene(scene);
         stage.show();

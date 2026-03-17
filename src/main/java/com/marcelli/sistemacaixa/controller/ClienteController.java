@@ -4,8 +4,12 @@ import com.marcelli.sistemacaixa.model.Cliente;
 import com.marcelli.sistemacaixa.service.ClienteService;
 import jakarta.persistence.EntityNotFoundException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -14,9 +18,11 @@ import java.util.Optional;
 public class ClienteController {
 
     private final ClienteService clienteService;
+    private final ApplicationContext springContext;
 
-    public ClienteController(ClienteService clienteService){
+    public ClienteController(ClienteService clienteService, ApplicationContext springContext){
         this.clienteService = clienteService;
+        this.springContext = springContext;
     }
 
     @FXML
@@ -44,6 +50,20 @@ public class ClienteController {
     private TableColumn<Cliente, String> colunaTelefone;
     @FXML
     private TableColumn<Cliente, String> colunaEmail;
+
+    @FXML
+    public void abrirMenu(javafx.event.ActionEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu-view.fxml"));
+        loader.setControllerFactory(springContext::getBean);
+
+        Scene scene = new Scene(loader.load(), 600, 400);
+
+        // pega a janela atual e troca a cena
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Menu Principal");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     // Inicializa a tabela ao abrir a tela
     @FXML

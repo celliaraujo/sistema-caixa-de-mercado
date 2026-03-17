@@ -9,17 +9,34 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcelli.sistemacaixa.controller.ProdutoController">
    <children>
-      <Label text="Cadastro de Produto" />
+      <HBox prefHeight="36.0" prefWidth="580.0" spacing="10.0">
+         <children>
+            <Label text="Gerenciamento de Produtos">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </Label>
+            <Button onAction="#abrirMenu" mnemonicParsing="false" text="Menu principal">
+               <HBox.margin>
+                  <Insets left="310.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
       <HBox prefHeight="26.0" prefWidth="580.0" spacing="10.0">
          <children>
-            <TextField fx:id="setorField" prefHeight="25.0" prefWidth="107.0" promptText="Setor" />
-            <TextField fx:id="nomeField" prefHeight="25.0" prefWidth="211.0" promptText="Nome" />
+            <TextField fx:id="setorField" prefHeight="25.0" prefWidth="73.0" promptText="Setor" />
+            <TextField fx:id="nomeField" prefHeight="25.0" prefWidth="152.0" promptText="Nome" />
             <TextField fx:id="marcaField" promptText="Marca" />
             <TextField fx:id="precoField" prefHeight="25.0" prefWidth="105.0" promptText="Preço" />
-            <TextField fx:id="descontoField" prefHeight="25.0" prefWidth="105.0" promptText="Desconto %" />
+            <TextField fx:id="descontoField" prefHeight="25.0" prefWidth="84.0" promptText="Desconto %" />
          </children>
          <VBox.margin>
             <Insets top="10.0" />
@@ -30,11 +47,11 @@
             <Insets top="10.0" />
          </VBox.margin>
          <children>
-            <Button onAction="#salvarProduto" mnemonicParsing="false" text="Cadastrar" />
-            <Button onAction="#atualizarProduto" mnemonicParsing="false" text="Atualizar" />
-            <Button onAction="#excluirProduto" mnemonicParsing="false" text="Remover" />
-            <Button onAction="#filtrarProduto" mnemonicParsing="false" text="Filtrar" />
-            <Button onAction="#listarProdutos" mnemonicParsing="false" text="Listar Todos" />
+            <Button mnemonicParsing="false" onAction="#salvarProduto" text="Cadastrar" />
+            <Button mnemonicParsing="false" onAction="#atualizarProduto" text="Atualizar" />
+            <Button mnemonicParsing="false" onAction="#excluirProduto" text="Remover" />
+            <Button mnemonicParsing="false" onAction="#filtrarProduto" text="Filtrar" />
+            <Button mnemonicParsing="false" onAction="#carregarProdutos" text="Listar Todos" />
          </children>
       </HBox>
       <Separator prefWidth="200.0">
@@ -42,13 +59,13 @@
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
       </Separator>
-      <TableView fx:id="tabelaProdutos" prefHeight="282.0" prefWidth="580.0">
+      <TableView fx:id="tabelaProdutos" onMouseClicked="#selecionarProduto" prefHeight="282.0" prefWidth="580.0">
         <columns>
-          <TableColumn prefWidth="76.0" text="Setor" />
-          <TableColumn prefWidth="222.0" text="Nome" />
-            <TableColumn prefWidth="130.0" text="Marca" />
-            <TableColumn prefWidth="70.0" text="Preço" />
-            <TableColumn prefWidth="81.0" text="Desconto %" />
+          <TableColumn fx:id="colunaSetor" prefWidth="76.0" text="Setor" />
+          <TableColumn fx:id="colunaNome" prefWidth="222.0" text="Nome" />
+            <TableColumn fx:id="colunaMarca" prefWidth="130.0" text="Marca" />
+            <TableColumn fx:id="colunaPreco" prefWidth="70.0" text="Preço" />
+            <TableColumn fx:id="colunaDesconto" prefWidth="81.0" text="Desconto %" />
         </columns>
       </TableView>
    </children>

@@ -19,18 +19,19 @@ public class Produto {
     private BigDecimal preco;
     private double percentualDesconto;
 
+    public Produto(){}
+
     private Produto(Builder builder){
-        this.id = builder.id;
-        this.nome = builder.nome;
-        this.marca = builder.marca;
-        this.preco = builder.preco;
-        this.setor = builder.setor;
-        this.percentualDesconto = builder.percentualDesconto;
+        setNome(builder.nome);
+        setMarca(builder.marca);
+        setPreco(builder.preco);
+        setSetor(builder.setor);
+        setPercentualDesconto(builder.percentualDesconto);
     }
 
     //classe estática interna Builder
     public static class Builder{
-        private long id;
+        private Long id;
         private String nome;
         private String marca;
         private String setor;
@@ -83,7 +84,7 @@ public class Produto {
     }
 
     public void setSetor(String setor) {
-        if(nome == null || nome.isBlank()) {
+        if(nome == null || setor.isBlank()) {
             throw new IllegalArgumentException("Setor não pode ser vazio.");
         }
         this.setor = setor;
@@ -104,7 +105,7 @@ public class Produto {
         this.preco = preco;
     }
 
-    public double getPercentualDesconto() {
+    public double getDesconto() {
         return percentualDesconto;
     }
 
@@ -116,6 +117,7 @@ public class Produto {
     }
 
     public BigDecimal getPrecoComDesconto(){
+        if(preco==null) return BigDecimal.ZERO;
         BigDecimal desconto = preco.multiply(BigDecimal.valueOf(percentualDesconto / 100));
         return preco.subtract(desconto);
     }

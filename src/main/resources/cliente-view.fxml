@@ -10,9 +10,26 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcelli.sistemacaixa.controller.ClienteController">
-   <Label text="Cadastro de Cliente" />
+   <HBox prefHeight="32.0" prefWidth="580.0" spacing="10.0">
+      <children>
+         <Label text="Gerenciamento de Clientes">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+            <padding>
+               <Insets top="5.0" />
+            </padding>
+         </Label>
+         <Button mnemonicParsing="false" onAction="#abrirMenu" text="Menu principal" textAlignment="CENTER">
+            <HBox.margin>
+               <Insets left="320.0" />
+            </HBox.margin>
+         </Button>
+      </children>
+   </HBox>
    <Separator prefWidth="200.0" />
    <FlowPane hgap="10.0" prefHeight="108.0" prefWidth="462.0" vgap="10.0">
       <children>
