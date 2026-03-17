@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcelli.sistemacaixa.controller.ProdutoController">
+   <children>
+      <Label text="Cadastro de Produto" />
+      <HBox prefHeight="26.0" prefWidth="580.0" spacing="10.0">
+         <children>
+            <TextField fx:id="setorField" prefHeight="25.0" prefWidth="107.0" promptText="Setor" />
+            <TextField fx:id="nomeField" prefHeight="25.0" prefWidth="211.0" promptText="Nome" />
+            <TextField fx:id="marcaField" promptText="Marca" />
+            <TextField fx:id="precoField" prefHeight="25.0" prefWidth="105.0" promptText="Preço" />
+            <TextField fx:id="descontoField" prefHeight="25.0" prefWidth="105.0" promptText="Desconto %" />
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="34.0" prefWidth="580.0" spacing="10.0">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <children>
+            <Button onAction="#salvarProduto" mnemonicParsing="false" text="Cadastrar" />
+            <Button onAction="#atualizarProduto" mnemonicParsing="false" text="Atualizar" />
+            <Button onAction="#excluirProduto" mnemonicParsing="false" text="Remover" />
+            <Button onAction="#filtrarProduto" mnemonicParsing="false" text="Filtrar" />
+            <Button onAction="#listarProdutos" mnemonicParsing="false" text="Listar Todos" />
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0">
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </Separator>
+      <TableView fx:id="tabelaProdutos" prefHeight="282.0" prefWidth="580.0">
+        <columns>
+          <TableColumn prefWidth="76.0" text="Setor" />
+          <TableColumn prefWidth="222.0" text="Nome" />
+            <TableColumn prefWidth="130.0" text="Marca" />
+            <TableColumn prefWidth="70.0" text="Preço" />
+            <TableColumn prefWidth="81.0" text="Desconto %" />
+        </columns>
+      </TableView>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

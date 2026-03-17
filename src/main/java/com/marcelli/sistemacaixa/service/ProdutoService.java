@@ -24,6 +24,30 @@ public class ProdutoService {
                 .orElseThrow(() -> new EntityNotFoundException("Nenhum produto encontrado com o id: " + id));
     }
 
+    public List<Produto> buscarPorNome(String nome){
+        List<Produto> produtos = produtoRepository.findByNomeContainingIgnoreCase(nome);
+        if(produtos.isEmpty()){
+            System.out.println("Nenhum produto encontrado com o nome: " + nome);
+        }
+        return produtos;
+    }
+
+    public List<Produto> buscarPorMarca(String marca){
+        List<Produto> produtos = produtoRepository.findByMarcaContainingIgnoreCase(marca);
+        if(produtos.isEmpty()){
+            System.out.println("Nenhum produto encontrado com a marca: " + marca);
+        }
+        return produtos;
+    }
+
+    public List<Produto> buscarPorSetor(String setor){
+        List<Produto> produtos = produtoRepository.findByMarcaContainingIgnoreCase(setor);
+        if(produtos.isEmpty()){
+            System.out.println("Nenhum produto encontrado com o setor: " + setor);
+        }
+        return produtos;
+    }
+
     public List<Produto> listarTodos(){
         List<Produto> produtos =  produtoRepository.findAll();
         if(produtos.isEmpty()){

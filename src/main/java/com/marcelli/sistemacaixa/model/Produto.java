@@ -15,6 +15,7 @@ public class Produto {
     private Long id;
     private String nome;
     private String marca;
+    private String setor;
     private BigDecimal preco;
     private double percentualDesconto;
 
@@ -23,6 +24,7 @@ public class Produto {
         this.nome = builder.nome;
         this.marca = builder.marca;
         this.preco = builder.preco;
+        this.setor = builder.setor;
         this.percentualDesconto = builder.percentualDesconto;
     }
 
@@ -31,12 +33,14 @@ public class Produto {
         private long id;
         private String nome;
         private String marca;
+        private String setor;
         private BigDecimal preco;
         private double percentualDesconto;
 
-        public Builder(String nome, BigDecimal preco){
+        public Builder(String nome, BigDecimal preco, String setor){
             this.nome = nome;
             this.preco = preco;
+            this.setor = setor;
 
         }
 
@@ -72,6 +76,17 @@ public class Produto {
 
     public String getMarca() {
         return marca;
+    }
+
+    public String getSetor() {
+        return setor;
+    }
+
+    public void setSetor(String setor) {
+        if(nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Setor não pode ser vazio.");
+        }
+        this.setor = setor;
     }
 
     public void setMarca(String marca) {
